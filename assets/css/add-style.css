@@ -1,0 +1,398 @@
+/* ------------------------------
+フロントページ サイドバー
+------------------------------ */
+
+.bnr-honyasan {
+  border: 1px solid #888;
+}
+.sidebar-links h2 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.sidebar-links ul {
+  list-style: none;
+  margin: 0;
+}
+.sidebar-links li {
+  font-size: 12px;
+  padding: 4px 0;
+  text-align: center;
+  border: 1px solid #1a71b2;
+  margin-bottom: 15px;
+}
+.sidebar-links li a {
+  display: inline-block;
+  width: 100%;
+}
+
+/* ------------------------------
+オンラインお布施
+------------------------------ */
+
+/* フロントページ サイドバー内 */
+
+.bnr-onlineofuse-sidebar {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .bnr-onlineofuse-sidebar {
+    display: inline;
+  }
+}
+
+/* フロントページ メイン内 */
+
+.bnr-onlineofuse {
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 600px) {
+  .bnr-onlineofuse {
+    display: none;
+  }
+}
+
+.bnr-onlineofuse a {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4ac0b0;
+}
+
+.bnr-onlineofuse a:hover {
+  transition: background 0.3s ease;
+  background: #52caba;
+}
+
+.return-top-btn {
+  margin-top: 1.5rem;
+}
+
+/* ------------------------------
+スリランカの少女
+------------------------------ */
+
+.sachi-midashi {
+  margin-bottom: 0;
+}
+
+span + .sachi-title {
+  margin-top: 0.25rem;
+}
+
+.sachi-list {
+  list-style: none;
+  font-size: 0.8rem;
+  text-align: right;
+  border-bottom: 2px solid #d9a62e;
+  margin-bottom: 2rem;
+  margin-left: 0;
+  padding-bottom: 0.5rem;
+}
+
+.sachi-list li {
+  line-height: 1.5;
+}
+
+.sachi-comment {
+  background-color: #eef1f4;
+  padding: 0.5rem;
+}
+
+.sachi-comment p {
+  line-height: 2;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.sachi-comment p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ------------------------------
+ご意見メール
+------------------------------ */
+
+.goiken-mail {
+  border: 1px solid #ccc;
+  margin-top: 50px;
+  padding: 16px;
+}
+
+.goiken-mail h3 {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.goiken-mail p {
+  font-size: 0.95rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.goiken-address {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.goiken-address img {
+  max-width: 320px;
+}
+
+.goiken-caption {
+  background-color: #eef1f4;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.goiken-caption ul {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.goiken-caption li {
+  margin: 0;
+  line-height: 1.75;
+}
+
+/* ------------------------------
+郵便振替・銀行振込によるお布施
+------------------------------ */
+.hedding-bottomlline-2colors {
+  font-family: "黎ミン M", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
+    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding-bottom: 0.3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  border-bottom: 2px solid #cacaca;
+  margin-top: 3rem;
+}
+.hedding-bottomlline-2colors::after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  z-index: 2;
+  content: "";
+  width: 24%;
+  height: 2px;
+  background-color: #c64306;
+}
+
+.hedding-min-center {
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
+    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 4rem;
+}
+.hedding-min-center._marginBottomWide {
+  margin-bottom: 3rem;
+}
+
+.ofuse-unit {
+  list-style: none;
+  margin-left: 0;
+  margin-top: 2rem;
+}
+.ofuse-unit ._title {
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
+    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+  font-size: 1.3rem;
+}
+.ofuse-unit ._title span {
+  color: #a87b12;
+}
+.ofuse-unit ._overview {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-top: 0.5rem;
+  padding: 0 0.95rem;
+}
+@media print, screen and (min-width: 37.5em) {
+  .ofuse-unit ._overview {
+    padding: 0 2.3rem;
+  }
+}
+.ofuse-unit._marginTopWide {
+  margin-top: 4rem;
+}
+
+.ofuse-box {
+  background-color: #eef1f4;
+  margin-top: 2rem;
+  padding: 1.5rem 0.75rem 0.75rem;
+}
+@media print, screen and (min-width: 37.5em) {
+  .ofuse-box {
+    padding: 1.5rem;
+  }
+}
+.ofuse-box ._headding {
+  font-size: 1.05rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Noto Sans Japanese", Hiragino Kaku Gothic ProN, Arial, Meiryo, sans-serif;
+  line-height: 1;
+  text-align: center;
+  padding: 0.3rem;
+  border-top: 1px solid #94b0cb;
+  border-bottom: 1px solid #94b0cb;
+}
+.ofuse-box ._headding + ._description {
+  margin-top: 1.75rem;
+}
+.ofuse-box ._description {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.ofuse-box ._description b {
+  color: #c64306;
+  font-weight: 600;
+}
+.ofuse-box ._description li {
+  margin-top: 0.75rem;
+}
+.ofuse-box ._footnote {
+  font-size: 0.9rem;
+  color: #333;
+  list-style: none;
+  margin: 1.5rem 0 0;
+}
+.ofuse-box ._footnote li {
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+.ofuse-box ._caution {
+  margin-bottom: 0;
+}
+
+.accountNumbers {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+}
+@media print, screen and (min-width: 37.5em) {
+  .accountNumbers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.accountNumber {
+  background: white;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 10px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.accountNumber-blank ._footnote {
+  font-size: 0.9rem;
+  color: #333;
+  list-style: none;
+  margin: 0;
+}
+.accountNumber-blank ._footnote li {
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.accountNumber-headding {
+  font-size: 1rem;
+  margin-bottom: 0;
+  font-weight: 600;
+  border-bottom: 1px solid #666;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+.accountNumber-headding::before {
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  content: "";
+  color: #4db6ac;
+  margin-right: 0.3rem;
+}
+
+.accountNumber-data {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.accountNumber-data li {
+  line-height: 1.5;
+}
+.accountNumber-data li + li {
+  margin-top: 0.25rem;
+}
+.accountNumber-data small {
+  display: inline-block;
+}
+
+/* ------------------------------
+ブロックエディター対応
+------------------------------ */
+
+.has-red-background-color {
+  background-color: #c64306;
+}
+.has-red-color {
+  color: #c64306;
+}
+.has-gold-background-color {
+  background-color: #d9a62e;
+}
+.has-gold-color {
+  color: #d9a62e;
+}
+.has-gray-background-color {
+  background-color: #eef1f4;
+}
+.has-gray-color {
+  color: #eef1f4;
+}
+.has-beige-background-color {
+  background-color: #efeee4;
+}
+.has-beige-color {
+  color: #efeee4;
+}
+.has-blue-background-color {
+  background-color: #5d8ac9;
+}
+.has-blue-color {
+  color: #5d8ac9;
+}
+
+.has-small-font-size {
+  font-size: 14;
+}
+.has-normal-font-size {
+  font-size: 16;
+}
+.has-large-font-size {
+  font-size: 20;
+}
+.has-x-large-font-size {
+  font-size: 24;
+}

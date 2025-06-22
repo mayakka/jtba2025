@@ -1,0 +1,150 @@
+/* 文字設定
+---------------------------------------------*/
+body.mce-content-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans Japanese", Hiragino Kaku Gothic ProN, Arial, Meiryo, sans-serif;
+  font-size: 1rem;
+}
+h2 {
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin: 2rem  0  1rem  0;
+  color: #4db6ac;
+}
+b {
+  color: #c64306;
+  font-weight: normal;
+}
+
+/* まとめボックス
+---------------------------------------------*/
+.matome-box {
+  position: relative;
+  padding: 1em;
+  margin: 2.5rem 0;
+  top: 0;
+  background: #ededed; }
+.matome-box > * {
+  margin-bottom: 0; }
+.matome-box::before, .matome-box::after {
+  position: absolute;
+  top: 0;
+  content: '';
+  width: 10px;
+  height: 100%;
+  display: inline-block;
+  box-sizing: border-box; }
+.matome-box::before {
+  border-left: dashed 2px #94b0cb;
+  border-top: dashed 2px #94b0cb;
+  border-bottom: dashed 2px #94b0cb;
+  left: 0; }
+.matome-box::after {
+  border-top: dashed 2px #94b0cb;
+  border-right: dashed 2px #94b0cb;
+  border-bottom: dashed 2px #94b0cb;
+  right: 0; }
+.matome-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+.matome-box h2, .matome-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #5d8ac9;
+  text-align: center; }
+.matome-box ul {
+  margin: 0 auto;
+  list-style: none; }
+.matome-box ul li::before {
+  content: "●";
+  color: #5d8ac9;
+  margin-right: 0.3rem; }
+
+/* 偈ボックス
+---------------------------------------------*/
+.ge-box, .kantou-ge-box {
+  background-color: #f2f2f2;
+  padding: 1.5rem 1rem;
+  margin: 2.5rem 0;
+  border-top: 6px solid #c64306;
+  box-shadow: 0 1px 3px #cacaca; }
+
+.ge-box, .kantou-ge-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+.ge-box ul, .kantou-ge-box ul, .ge-box dl, .kantou-ge-box dl {
+  margin: 0 auto;
+  list-style: none; }
+.ge-box dt, .kantou-ge-box dt {
+  clear: left;
+  float: left;
+  width: 3rem; }
+.ge-box dd, .kantou-ge-box dd {
+  padding-left: 3rem; }
+.ge-box h2, .kantou-ge-box h2, .ge-box h3, .kantou-ge-box h3 {
+  font-size: 1.3rem;
+  font-family: "游明朝", YuMincho, "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center; }
+.ge-box .ge-pali, .kantou-ge-box .ge-pali {
+  font-size: 1.25rem;
+  font-family: "游明朝", YuMincho, "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+  font-weight: 400; }
+.ge-box .ge-wabun, .kantou-ge-box .ge-wabun {
+  color: #c64306;
+  line-height: 1.75;
+  margin-top: 1rem; }
+
+/* 巻頭偈ボックス
+---------------------------------------------*/
+.kantou-ge-box dt, .kantou-ge-box dd {
+  margin-top: 1.5rem;
+  line-height: 1.7; }
+
+.kantou-ge-box dt {
+  margin-top: 1.6rem;
+  line-height: 1.7;
+  color: #555; }
+
+.kantou-ge-box .ge-title {
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0;
+  border-top: 1px dotted #555;
+  border-bottom: 1px dotted #555; }
+
+.kantou-ge-box .ge-cap {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-top: 0.5rem; }
+
+/* 巻頭偈ボックス
+---------------------------------------------*/
+
+p.qa-q {
+  color: #c64306;
+}
+
+div.qa-q {
+  color: #c64306;
+  background-color: #efeee4;
+}
+
+.qa-q + p {
+  color: #000F55;
+}
+
+.qa-a {
+  color: #000F55;
+}
