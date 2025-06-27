@@ -5,21 +5,18 @@
 function jtba_enqueue()
 {
   wp_enqueue_style('base-style', get_stylesheet_uri(), array(), '1.0.0');
-  wp_enqueue_style('jtba-style', get_theme_file_uri('/assets/css/app.css'), array('base-style'), '1.1.1');
+  wp_enqueue_style('jtba-style', get_theme_file_uri('/assets/css/legacy-foundation.css'), array('base-style'), '1.1.1');
   wp_enqueue_style('add-style', get_theme_file_uri('/assets/css/add-style.css'), array('jtba-style'), '1.0.1');
   wp_enqueue_script('jtba-js', get_theme_file_uri('/assets/js/app.js'), array('jquery'), '1.0.0', true);
   wp_enqueue_script('add-script', get_theme_file_uri('/assets/js/add-script.js'), array('jquery'), '1.0.0', true);
   if (is_page(array('dana-online', 'dana01'))) {
-    wp_enqueue_style('ofuse-style', get_theme_file_uri('/assets/css/ofuse-style.css'), array(), '1.0.1');
+    wp_enqueue_style('ofuse-style', get_theme_file_uri('/assets/css/single/single-ofuse.css'), array(), '1.0.1');
   }
-  if (is_page('online-registration')) {
-    wp_enqueue_style('kp-style', get_theme_file_uri('/assets/css/kp-style.css'), array(), '1.0.2');
-  }
-  if (is_page('kp')) {
-    wp_enqueue_style('kp-style', get_theme_file_uri('/assets/css/kp-style.css'), array(), '1.1.0');
+  if (is_page(array('online-registration', 'kp'))) {
+    wp_enqueue_style('kp-style', get_theme_file_uri('/assets/css/single/single-kp.css'), array(), '1.1.0');
   }
   if (is_page(array('membership-update', 'bank-transfer-registration'))) {
-    wp_enqueue_style('membership-update', get_theme_file_uri('/assets/css/membership-update.css'), array(), '1.0.0');
+    wp_enqueue_style('membership-update', get_theme_file_uri('/assets/css/single/single-membership-update.css'), array(), '1.0.0');
   }
 }
 add_action('wp_enqueue_scripts', 'jtba_enqueue');
