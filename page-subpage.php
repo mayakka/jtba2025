@@ -1,7 +1,8 @@
 <?php
-/*
-Template Name: Privacy_Policy
-*/
+/**
+ * Template Name: サブページ共通
+ * Description: サイドバー付きの汎用固定ページテンプレート。協会綱領、プライバシーポリシー、特商法の表記などに使用。
+ */
 get_header(); ?>
 
 <?php get_template_part('header-subpage'); ?>
