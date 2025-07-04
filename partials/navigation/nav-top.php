@@ -68,6 +68,7 @@
           <a href="<?php echo esc_url(home_url('/support/')); ?>">入会・お布施</a>
           <ul class="submenu menu vertical" data-submenu>
             <li><a href="<?php echo esc_url(home_url('/support/join/')); ?>">仏教サポーターになる</a></li>
+            <li><a href="<?php echo esc_url(home_url('/support/kouryou/')); ?>">協会 綱領</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/online-registration/')); ?>">オンライン入会</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/bank-transfer-registration/')); ?>">振込用紙による入会</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/membership-update/')); ?>">退会・登録情報の変更</a></li>

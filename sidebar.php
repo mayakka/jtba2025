@@ -85,6 +85,7 @@
             ?>
           ">
             <li><a href="<?php echo esc_url(home_url('/support/join/')); ?>">仏教サポーターになる</a></li>
+            <li><a href="<?php echo esc_url(home_url('/support/kouryou/')); ?>">日本テーラワーダ仏教協会 綱領</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/online-registration/')); ?>">オンライン入会</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/bank-transfer-registration/')); ?>">振込用紙による入会</a></li>
             <li><a href="<?php echo esc_url(home_url('/support/membership-update/')); ?>">退会・登録情報の変更</a></li>
