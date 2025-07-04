@@ -1,14 +1,15 @@
 <?php
 
-// スタイルシートとスクリプトの読み込み
-
 function jtba_enqueue()
 {
+  // 基本スタイルの読み込み
   wp_enqueue_style('base-style', get_stylesheet_uri(), array(), '1.0.0');
   wp_enqueue_style('jtba-style', get_theme_file_uri('/assets/css/legacy-foundation.css'), array('base-style'), '1.1.1');
   wp_enqueue_style('add-style', get_theme_file_uri('/assets/css/add-style.css'), array('jtba-style'), '1.0.1');
   wp_enqueue_script('jtba-js', get_theme_file_uri('/assets/js/app.js'), array('jquery'), '1.0.0', true);
   wp_enqueue_script('add-script', get_theme_file_uri('/assets/js/add-script.js'), array('jquery'), '1.0.0', true);
+
+  // ページ別スタイル（既存ページ）
   if (is_page(array('dana-online', 'dana01'))) {
     wp_enqueue_style('ofuse-style', get_theme_file_uri('/assets/css/single/single-ofuse.css'), array(), '1.0.1');
   }
@@ -21,6 +22,19 @@ function jtba_enqueue()
 }
 add_action('wp_enqueue_scripts', 'jtba_enqueue');
 
+// ✅ サブページ用スタイル（スラッグに応じて自動）
+function jtba_enqueue_subpage_styles()
+{
+  if (is_page(array('kouryou', 'privacy-policy', 'transactions-law'))) {
+    wp_enqueue_style(
+      'subpage-style',
+      get_theme_file_uri('/assets/css/pages/page-subpage.css'),
+      array(),
+      '1.0.0'
+    );
+  }
+}
+add_action('wp_enqueue_scripts', 'jtba_enqueue_subpage_styles');
 
 // エディター用スタイルシートの読み込み
 add_theme_support('editor-styles');
@@ -400,3 +414,18 @@ function basic_auth($auth_list, $realm = "Restricted Area", $failed_text = "認�
   header('Content-type: text/html; charset=' . mb_internal_encoding());
   die($failed_text);
 }
+
+// 固定ページテンプレート「page-subpage.php」用のbodyクラスを追加
+// 例: page-subpage page-kouryou など
+function jtba_add_custom_body_classes($classes)
+{
+  if (is_page_template('page-subpage.php')) {
+    $classes[] = 'page-subpage';
+    $slug = get_post_field('post_name', get_post());
+    if ($slug) {
+      $classes[] = 'page-' . sanitize_html_class($slug);
+    }
+  }
+  return $classes;
+}
+add_filter('body_class', 'jtba_add_custom_body_classes');
