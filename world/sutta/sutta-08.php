@@ -116,7 +116,7 @@
         <dd class="raihai-yomi">カーダンティ ナン スパーナー チャ スィガーラー チャ ワカー キミー</dd>
         <dt class="raihai-pali">Kākā gijjhā ca khādanti, ye caññe santi pāṇayo.</dt>
         <dd class="raihai-yomi">カーカー ギッジャー チャ カーダンティ イェー チャンニェー サンティ パーナヨー</dd>
-        <dd class="raihai-wabun">犬や野や狐こや狼や虫類がこれを喰らい、烏や鷲やその他の生き物がこれを啄ばむ。</dd>
+        <dd class="raihai-wabun">犬や野狐［やこ］や狼や虫類がこれを喰らい、烏や鷲やその他の生き物がこれを啄ばむ。</dd>
       </dl>
     </li>
   </ul>
