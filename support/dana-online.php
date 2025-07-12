@@ -26,7 +26,7 @@ global $sect_title;
     </div>
   </section>
 
-  <section id="sect-2">
+  <!-- <section id="sect-2">
     <h3 class="headline-ofuse h1"><span>期間限定お布施</span></h3>
 
     <div class="toiawase-box grid-x grid-padding-x">
@@ -55,16 +55,19 @@ global $sect_title;
 							<div class="cell medium-6">
 								<a class="button button-ofuse expanded" href="https://buy.stripe.com/9B6eVe9em5Zp27D3qYgA80g" target="_blank">お布施する</a>
 							</div>
-							<!--div class="cell medium-6">
+							<div class="cell medium-6">
 										<a class="button button-ofuse-wh expanded" href="#" target="_blank">詳しく見る</a>
-									</div-->
+              </div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+  </section> -->
 
-  </section>
+  <div class="callout small" style="margin-bottom: 4rem;">
+    雨安居期間中のお坊様へのお布施は、以下の「比丘サンガ支援」にお振り込みください。<br>
+  </div>
 
   <section id="sect-3">
     <h3 class="headline-ofuse h1"><span>通常お布施</span></h3>
