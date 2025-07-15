@@ -19,6 +19,14 @@ function jtba_enqueue()
   if (is_page(array('membership-update', 'bank-transfer-registration'))) {
     wp_enqueue_style('membership-update', get_theme_file_uri('/assets/css/single/single-membership-update.css'), array(), '1.0.0');
   }
+  if (is_singular('agm')) {
+    wp_enqueue_style(
+      'single-agm-style',
+      get_template_directory_uri() . '/assets/css/single/single-agm.css',
+      array(),
+      filemtime(get_template_directory() . '/assets/css/single/single-agm.css')
+    );
+  }
 }
 add_action('wp_enqueue_scripts', 'jtba_enqueue');
 
@@ -101,29 +109,184 @@ function create_jtba_post_types()
 {
 
   register_post_type(
+    'kougi', //投稿タイプ名
+    array(
+      'label' => '根本仏教講義',
+      'labels' => array(
+        'name' => '根本仏教講義',
+        'singular_name' => '根本仏教講義',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => '根本仏教講義投稿用',  //説明文
+      'hierarchical' => true,  //コンテンツを階層構造にするかどうか
+      'has_archive' => false,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/kougi', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => false,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor'  //本文の編集機能
+      ),
+      'menu_position' => 7 //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'kantou', //投稿タイプ名
+    array(
+      'label' => '巻頭法話',
+      'labels' => array(
+        'name' => '巻頭法話',
+        'singular_name' => '巻頭法話',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => '巻頭法話投稿用',  //説明文
+      'hierarchical' => false,  //コンテンツを階層構造にするかどうか
+      'has_archive' => false,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/kantouhouwa', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => false,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor',  //本文の編集機能
+        'excerpt'  //抜粋
+      ),
+      'menu_position' => 8 //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'qa', //投稿タイプ名
+    array(
+      'label' => 'Q&A',
+      'labels' => array(
+        'name' => 'Q&A',
+        'singular_name' => 'Q&A',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => 'Q&A投稿用',  //説明文
+      'hierarchical' => false,  //コンテンツを階層構造にするかどうか
+      'has_archive' => true,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/q&a', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => true,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor',  //本文の編集機能
+        'excerpt'  //抜粋
+      ),
+      'taxonomies' => array('qa_category'),  //使用するタクソノミー
+      'menu_position' => 9  //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'oriori', //投稿タイプ名
+    array(
+      'label' => '折々の法話',
+      'labels' => array(
+        'name' => '折々の法話',
+        'singular_name' => '折々の法話',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => '折々の法話投稿用',  //説明文
+      'hierarchical' => false,  //コンテンツを階層構造にするかどうか
+      'has_archive' => false,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/oriori', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => true,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor',  //本文の編集機能
+        'excerpt',  //抜粋
+        'custom-fields'  //カスタムフィールド
+      ),
+      'menu_position' => 10  //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'tobira', //投稿タイプ名
+    array(
+      'label' => '智慧の扉',
+      'labels' => array(
+        'name' => '智慧の扉',
+        'singular_name' => '智慧の扉',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => '智慧の扉投稿用',  //説明文
+      'hierarchical' => false,  //コンテンツを階層構造にするかどうか
+      'has_archive' => true,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/chienotobira', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => true,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor',  //本文の編集機能
+        'excerpt',  //抜粋
+        'custom-fields'  //カスタムフィールド
+      ),
+      'menu_position' => 10  //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'sehon', //投稿タイプ名
+    array(
+      'label' => '施本文庫',
+      'labels' => array(
+        'name' => '施本文庫',
+        'singular_name' => '施本文庫',
+      ),
+      'public' => true,  // 管理画面に表示しサイト上にも表示する
+      'description' => '施本文庫投稿用',  //説明文
+      'hierarchical' => false,  //コンテンツを階層構造にするかどうか
+      'has_archive' => true,  //trueで一覧ページを作成
+      'rewrite' => array(
+        'slug' => 'dhamma/sehonbunko', //リライトルールのスラッグ
+        'with_front' => false, //フロントページのスラッグを含めるかどうか
+      ),
+      'show_in_rest' => true,  //Gutenbergを有効化
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
+        'title',  //タイトル
+        'editor',  //本文の編集機能
+        'thumbnail', //サムネイル
+        'excerpt',  //抜粋
+        'custom-fields'  //カスタムフィールド
+      ),
+      'menu_position' => 11  //メニューの表示順位
+    )
+  );
+
+  register_post_type(
     'jataka', //投稿タイプ名
     array(
       'label' => 'ジャータカ物語',
       'labels' => array(
-        'all_items' => 'ジャータカ物語一覧',
-        'add_new' => '新規物語の追加',
-        'edit_item' => 'ジャータカ物語の編集',
-        'view_item' => 'ジャータカ物語を表示',
-        'search_items' => 'ジャータカ物語を検索',
-        'not_found' => 'ジャータカ物語は見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱にジャータカ物語はありませんでした。',
+        'name' => 'ジャータカ物語',
+        'singular_name' => 'ジャータカ物語',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => 'ジャータカ物語投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => true,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor',  //本文の編集機能
         'excerpt'  //抜粋
       ),
-      'menu_position' => 9 //メニューの表示順位
+      'menu_position' => 12  //メニューの表示順位
     )
   );
 
@@ -132,26 +295,21 @@ function create_jtba_post_types()
     array(
       'label' => '本屋さん',
       'labels' => array(
-        'all_items' => '本屋さん一覧',
-        'add_new' => '新規アイテムの追加',
-        'edit_item' => '本屋さんの編集',
-        'view_item' => '本屋さんを表示',
-        'search_items' => '本屋さんを検索',
-        'not_found' => '本屋さんは見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱に本屋さんはありませんでした。',
+        'name' => '本屋さん',
+        'singular_name' => '本屋さん',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => '本屋さん投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => true,  //trueで一覧ページを作成
       'show_in_rest' => true,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor',  //本文の編集機能
         'thumbnail' //サムネイル
       ),
-      'menu_position' => 10, //メニューの表示順位
-      'taxonomies' => array('book_category')  //使用するタクソノミー
+      'taxonomies' => array('book_category'),  //使用するタクソノミー
+      'menu_position' => 13  //メニューの表示順位
     )
   );
 
@@ -160,25 +318,20 @@ function create_jtba_post_types()
     array(
       'label' => '映像・音声',
       'labels' => array(
-        'all_items' => 'アイテム一覧',
-        'add_new' => '新規アイテムの追加',
-        'edit_item' => 'アイテムの編集',
-        'view_item' => 'アイテムを表示',
-        'search_items' => 'アイテムを検索',
-        'not_found' => 'アイテムは見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱にアイテムはありませんでした。',
+        'name' => '映像・音声',
+        'singular_name' => '映像・音声',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => '映像・音声投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => true,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor'  //本文の編集機能
       ),
-      'menu_position' => 11, //メニューの表示順位
-      'taxonomies' => array('disc_media')  //使用するタクソノミー
+      'taxonomies' => array('disc_media'),  //使用するタクソノミー
+      'menu_position' => 14,  //メニューの表示順位
     )
   );
 
@@ -187,26 +340,21 @@ function create_jtba_post_types()
     array(
       'label' => 'PDF文庫',
       'labels' => array(
-        'all_items' => 'PDF文庫一覧',
-        'add_new' => '新規PDFの追加',
-        'edit_item' => 'PDF文庫の編集',
-        'view_item' => 'PDF文庫を表示',
-        'search_items' => 'PDF文庫を検索',
-        'not_found' => 'PDF文庫は見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱にPDF文庫はありませんでした。',
+        'name' => 'PDF文庫',
+        'singular_name' => 'PDF文庫',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => 'PDF文庫投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => false,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor',  //本文の編集機能
         'excerpt',  //抜粋
         'thumbnail' //サムネイル
       ),
-      'menu_position' => 16 //メニューの表示順位
+      'menu_position' => 15  //メニューの表示順位
     )
   );
 
@@ -215,23 +363,18 @@ function create_jtba_post_types()
     array(
       'label' => 'ダンマサークル',
       'labels' => array(
-        'all_items' => 'ダンマサークル一覧',
-        'add_new' => '新規サークルの追加',
-        'edit_item' => 'ダンマサークルの編集',
-        'view_item' => 'ダンマサークルを表示',
-        'search_items' => 'ダンマサークルを検索',
-        'not_found' => 'ダンマサークルは見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱にダンマサークルはありませんでした。',
+        'name' => 'ダンマサークル',
+        'singular_name' => 'ダンマサークル',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => 'ダンマサークル投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => false,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title'  //タイトル
       ),
-      'menu_position' => 21 //メニューの表示順位
+      'menu_position' => 21  //メニューの表示順位
     )
   );
 
@@ -240,24 +383,19 @@ function create_jtba_post_types()
     array(
       'label' => '協力寺院',
       'labels' => array(
-        'all_items' => '協力寺院一覧',
-        'add_new' => '新規寺院の追加',
-        'edit_item' => '協力寺院の編集',
-        'view_item' => '協力寺院を表示',
-        'search_items' => '協力寺院を検索',
-        'not_found' => '協力寺院は見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱に協力寺院はありませんでした。',
+        'name' => '協力寺院',
+        'singular_name' => '協力寺院',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => '協力寺院投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => false,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor'  //本文の編集機能
       ),
-      'menu_position' => 22 //メニューの表示順位
+      'menu_position' => 22  //メニューの表示順位
     )
   );
 
@@ -266,24 +404,43 @@ function create_jtba_post_types()
     array(
       'label' => '関連リンク集',
       'labels' => array(
-        'all_items' => '関連リンク一覧',
-        'add_new' => '新規リンクの追加',
-        'edit_item' => '関連リンクの編集',
-        'view_item' => '関連リンクを表示',
-        'search_items' => '関連リンクを検索',
-        'not_found' => '関連リンクは見つかりませんでした。',
-        'not_found_in_trash' => 'ゴミ箱に関連リンクはありませんでした。',
+        'name' => '関連リンク集',
+        'singular_name' => '関連リンク集',
       ),
       'public' => true,  // 管理画面に表示しサイト上にも表示する
       'description' => '関連リンク投稿用',  //説明文
       'hierarchical' => false,  //コンテンツを階層構造にするかどうか
       'has_archive' => false,  //trueで一覧ページを作成
       'show_in_rest' => false,  //Gutenbergを有効化
-      'supports' => array(  //記事編集画面に表示する項目を配列で指定することができる
+      'supports' => array(  //記事編集画面に表示する項目を配列で指定
         'title',  //タイトル
         'editor'  //本文の編集機能
       ),
-      'menu_position' => 23 //メニューの表示順位
+      'menu_position' => 23  //メニューの表示順位
+    )
+  );
+
+  register_post_type(
+    'agm',
+    array(
+      'label' => '年次総会資料',
+      'labels' => array(
+        'name' => '年次総会資料',
+        'singular_name' => '年次総会資料',
+      ),
+      'public' => true,
+      'exclude_from_search' => true,  // サイト内検索結果に表示させない
+      'publicly_queryable' => true,   // 直接リンクで表示は可能にする
+      'show_ui' => true,
+      'show_in_menu' => true,        // メインメニューに非表示
+      'has_archive' => false,
+      'rewrite' => array(
+        'slug' => 'agm',
+        'with_front' => false,
+      ),
+      'supports' => array('title', 'editor', 'excerpt'),
+      'show_in_rest' => true,
+      'menu_position' => 24
     )
   );
 
