@@ -37,7 +37,7 @@
         <?php echo do_shortcode('[ssba-buttons]'); ?>
 
         <?php get_template_part('partials/navigation/nav-bottom-qa'); ?>
-        
+
         <div class="qa-tag-box">
           <h3><i class="far fa-tags"></i> 関連タグ</h3>
           <?php
@@ -46,13 +46,15 @@
             echo '<ul>';
             foreach ( $terms as $term ) {
               $term_link = get_term_link( $term );
-              echo '<li><a href="'.esc_url( $term_link ).'">'.$term->name.'</a></li>';
+              if ( ! is_wp_error( $term_link ) ) {
+                echo '<li><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></li>';
+              }
             }
             echo '</ul>';
           }
           ?>
         </div>
-        
+
         <?php endwhile; endif; ?>
       </section>
 
