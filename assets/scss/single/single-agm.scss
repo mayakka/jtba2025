@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .date-agm {
   font-size: 0.8rem;
   color: #555;
@@ -13,7 +17,7 @@
 
 .agm-body {
   hr {
-    margin: 1.5rem 0;
+    margin: 2.5rem 0;
     border: 0;
     border-top: 1px solid #ddd;
   }
@@ -21,20 +25,22 @@
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    font-weight: 700;
+    font-weight: 600;
+    color: #004D40;
   }
   h3 {
     font-size: 1.25rem;
     margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.55rem;
     font-weight: 600;
+    color: #333;
   }
   figure {
     margin: 1.5rem 0;
     text-align: center;
   }
   figcaption {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: #777;
     text-align: center;
     margin-top: 0.5rem;
